@@ -3,7 +3,7 @@
 // Grundfunktioner
 
 
-// filmer)
+// filmer
 const movies = [
   { id: 1, title: "Inception", genre: "Sci-Fi", year: 2010, ratings: [9, 8, 9, 7, 8] },
   { id: 2, title: "The Matrix", genre: "Sci-Fi", year: 1999, ratings: [9, 9, 8, 9, 8] },
@@ -26,15 +26,23 @@ const addAverageRating = movie => ({...movie, averageRating: calculateAverage(mo
 
 
 // Filtrerar filmer efter genre
-    const filterByGenre = (genre, movies) => movies.filter(m => m.genre === genre);
+  const filterByGenre = (genre, movies) => movies.filter(m => m.genre === genre);
 
 
 // Filtrera filmer efter minsta årtal
-    const filterByYear = (minYear, movies) => movies.filter(m => m.year >= minYear);
-
-// TESTER 
+  const filterByYear = (minYear, movies) => movies.filter(m => m.year >= minYear);
 
 
+// Sorterar filmer efter medelvärdet av betyg
+  const moviesWithAverage = movies.map(addAverageRating);
+  const sortByRating = movies => movies.sort((a, b) => b.averageRating - a.averageRating);
+
+
+
+
+
+
+// TESTER
 
 console.log("Inception:", calculateAverage(movies[0].ratings));
 
@@ -49,3 +57,7 @@ console.log(sciFiMovies);
 
 const moviesFrom2000 = filterByYear(2000, movies);
 console.log(moviesFrom2000);
+
+
+const sortedMovies = sortByRating(moviesWithAverage);
+console.log(sortedMovies);
