@@ -3,7 +3,6 @@
 // Grundfunktioner
 
 
-
 // filmer)
 const movies = [
   { id: 1, title: "Inception", genre: "Sci-Fi", year: 2010, ratings: [9, 8, 9, 7, 8] },
@@ -13,11 +12,40 @@ const movies = [
 ];
 
 
-//1)
+//Räcknar ut medelvärdet av betygen 
 
 const calculateAverage = ratings =>
   ratings.reduce((sum, r) => sum + r, 0) / ratings.length;
 
-// tester 
+
+
+// Lägger till Ratingmedelvärdet i en filmobjekt 
+
+const addAverageRating = movie => ({...movie, averageRating: calculateAverage(movie.ratings)}
+);
+
+
+// Filtrerar filmer efter genre
+    const filterByGenre = (genre, movies) => movies.filter(m => m.genre === genre);
+
+
+// Filtrera filmer efter minsta årtal
+    const filterByYear = (minYear, movies) => movies.filter(m => m.year >= minYear);
+
+// TESTER 
+
+
 
 console.log("Inception:", calculateAverage(movies[0].ratings));
+
+
+const inceptionWithAverage = addAverageRating(movies[0]);
+console.log(inceptionWithAverage);
+
+
+const sciFiMovies = filterByGenre("Sci-Fi", movies);
+console.log(sciFiMovies);
+
+
+const moviesFrom2000 = filterByYear(2000, movies);
+console.log(moviesFrom2000);
