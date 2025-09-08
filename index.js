@@ -15,9 +15,9 @@ const movies = [
 
 //1)
 
-const calculateAverage = ratings => {
-    ratings.reduce((sum, r) => sum + r, 0) / ratings.length
-}
+const calculateAverage = ratings =>
+  ratings.reduce((sum, r) => sum + r, 0) / ratings.length;
 
 // tester 
 
+console.log("Inception:", calculateAverage(movies[0].ratings));
